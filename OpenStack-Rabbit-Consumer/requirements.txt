@@ -1,5 +1,0 @@
-rabbitpy
-requests
-requests_kerberos
-pika
-urllib3
