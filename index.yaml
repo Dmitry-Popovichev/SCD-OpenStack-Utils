@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   rabbit-consumer-chart:
   - apiVersion: v2
+    appVersion: v2.3.7
+    created: "2024-02-27T13:11:05.65612746Z"
+    description: A Helm chart for Rabbit Consumers
+    digest: 127aadef839beb35d0c0adc7aec1513674157154f47bfc4df3843291a727254f
+    name: rabbit-consumer-chart
+    type: application
+    urls:
+    - https://github.com/stfc/SCD-OpenStack-Utils/releases/download/rabbit-consumer-chart-1.6.1/rabbit-consumer-chart-1.6.1.tgz
+    version: 1.6.1
+  - apiVersion: v2
     appVersion: v2.3.5
     created: "2023-08-18T14:11:15.802873145Z"
     description: A Helm chart for Rabbit Consumers
@@ -161,4 +171,4 @@ entries:
     urls:
     - https://github.com/stfc/SCD-OpenStack-Utils/releases/download/rabbit-consumer-chart-1.0.0/rabbit-consumer-chart-1.0.0.tgz
     version: 1.0.0
-generated: "2023-08-18T14:11:15.802972844Z"
+generated: "2024-02-27T13:11:05.656453188Z"
