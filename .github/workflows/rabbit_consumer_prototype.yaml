@@ -1,8 +1,8 @@
-name: Rabbit Consumer
+name: Rabbit Consumer Protoype
 
 on:
   schedule: 
-      - cron: "1 * * * *" # Every minute
+      - cron: "5 * * * *" # Every 5 minutes
 
 jobs:
   test_and_lint:
