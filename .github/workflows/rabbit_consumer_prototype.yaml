@@ -2,7 +2,9 @@ name: Rabbit Consumer Protoype
 
 on:
   schedule: 
-      - cron: "21 10 * * SUN-SAT" # Everyday at 10:21
+      - cron: "* 5 * * *" # Every 5 minutes
+
+
 
 jobs:
   test_and_lint:
