@@ -10,17 +10,15 @@ on:
 jobs:
   version_increment_test:
     runs-on: ubuntu-latest
-    #defaults:
-      #run:
-        #working-directory: /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/.github/workflows/bin
     steps:
       - uses: actions/checkout@v4
 
-      - name: Increment Version
-        run: /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/.github/workflows/bin/version_increment.sh
+
+      #- name: Increment Version
+        #run: /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/.github/workflows/bin/version_increment.sh
 
       - name: Increment Version
-        run: ./.github/workflows/bin/version_increment.sh
+        run: bash ${{ github.workspace }}/.github/workflows/bin/version_increment.sh
 
       - name: Commit Changes
         uses: EndBug/add-and-commit@v9
