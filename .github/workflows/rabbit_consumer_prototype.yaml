@@ -10,9 +10,9 @@ on:
 jobs:
   version_increment_test:
     runs-on: ubuntu-latest
-    #defaults:
-      #run:
-        #working-directory: ./scripts
+    defaults:
+      run:
+        working-directory: /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/.github/workflows/bin
     steps:
       - uses: actions/checkout@v4
 
