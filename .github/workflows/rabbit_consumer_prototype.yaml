@@ -13,17 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Increment Version
-        if: always()
-        run: /home/runner/work/SCD-OpenStack-Utils/.github/workflows/bin/version_increment.sh
+      #- name: Increment Version
+        #if: always()
+       # run: /home/runner/work/SCD-OpenStack-Utils/.github/workflows/bin/version_increment.sh
 
-      - name: Increment Version 2
-        if: always()
-        run: bash .github/workflows/bin/version_increment.sh
+      #- name: Increment Version 2
+       # if: always()
+        #run: bash .github/workflows/bin/version_increment.sh
 
-      - name: Path finder
+      - name: Increment Version 3
         if: always()
-        run: bash ${{ github.workspace }}/.github/workflows/bin
+        run: bash ${{ github.workspace }}/.github/workflows/bin/version_increment.sh
 
       - name: Path finder 2
         if: always()
