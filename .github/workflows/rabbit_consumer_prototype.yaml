@@ -5,15 +5,6 @@ on:
       - cron: "21 10 * * SUN-SAT" # Everyday at 10:21
 
 jobs:
-  version_increment:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Increment Version
-        run: |
-          ./version_increment.sh
-
   test_and_lint:
     runs-on: ubuntu-latest
     strategy:
@@ -46,6 +37,10 @@ jobs:
       - name: Prepare coverage
         run: |
           cd OpenStack-Rabbit-Consumer && python -m coverage xml
+
+      - name: Increment Version
+        run: |
+          ./version_increment.sh
 
       - name: Upload coverage to codecov
         uses: codecov/codecov-action@v4
