@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    paths:
+      - ".github/workflows/rabbit_consumer_prototype.yaml"
+      - "OpenStack-Rabbit-Consumer/**"
   schedule: 
       - cron: "* 5 * * *" # Every 5 minutes
 
