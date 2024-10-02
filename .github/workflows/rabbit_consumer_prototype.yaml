@@ -5,6 +5,57 @@ on:
       - cron: "21 10 * * SUN-SAT" # Everyday at 10:21
 
 jobs:
+  version_increment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Increment Version
+        run: |
+          ./version_increment.sh
+
+
+  test_and_lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+      - name: Install dependencies
+        run: |
+          sudo apt-get update --fix-missing
+          python -m pip install --upgrade pip
+          # Required for requests-kerberos
+          sudo DEBIAN_FRONTEND=noninteractive apt-get -yq install libkrb5-dev
+          pip install -r OpenStack-Rabbit-Consumer/requirements.txt
+          pip install -r OpenStack-Rabbit-Consumer/requirements-test.txt
+      
+      - name: Run tests
+        # Using Python3 to launch the module sets up the Python path for us
+        run: cd OpenStack-Rabbit-Consumer && python3 -m coverage run -m pytest .
+      
+      - name: Analyse with pylint
+        run: |
+          cd OpenStack-Rabbit-Consumer && pylint $(git ls-files '*.py')
+
+      - name: Prepare coverage
+        run: |
+          cd OpenStack-Rabbit-Consumer && python -m coverage xml
+
+      - name: Upload coverage to codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: OpenStack-Rabbit-Consumer/coverage.xml
+          fail_ci_if_error: true
+          flags: rabbit_consumer
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   push_dev_image_harbor:
     runs-on: ubuntu-latest
     needs: test_and_lint
