@@ -1,11 +1,16 @@
 #!/usr/bin/bash
 
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-
-echo $parent_path
-
-
 echo "Hello World!"
+echo ~0
+echo ~1
+echo ~2
+echo ~3
+echo ~4
+echo ~5
+echo ~6
+echo ~7
+echo "Bye"
+
 version=`cat /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/OpenStack-Rabbit-Consumer/version.txt` #reads the version.txt file and sets the version to the current version
 
 # cuts the $version variable into major, minor and patch numbers removing the fullstop
