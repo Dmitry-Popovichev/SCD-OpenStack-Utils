@@ -13,23 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      #- name: Increment Version
-        #if: always()
-       # run: /home/runner/work/SCD-OpenStack-Utils/.github/workflows/bin/version_increment.sh
-
-      #- name: Increment Version 2
-       # if: always()
-        #run: bash .github/workflows/bin/version_increment.sh
-
       - name: Increment Version 3
         if: always()
         run: bash ${{ github.workspace }}/.github/workflows/bin/version_increment.sh
 
-      - name: Path finder 2
+      - name: Path finder 
         if: always()
         run: |
           echo ${{ github.workspace }}/.github/workflows/bin/version_increment.sh
-          echo ${{ github.workspace }}
+          echo ${{ github.workspace }}/OpenStack-Rabbit-Consumer/version.txt
+          echo ${{ github.workspace }}./version.txt
           echo $GITHUB_WORKSPACE
 
       - name: Commit Changes
