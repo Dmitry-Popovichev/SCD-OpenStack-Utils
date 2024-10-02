@@ -25,3 +25,5 @@ echo $newversion
 
 #overwrites the version.txt file with new new version
 printf "$newversion" > /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/OpenStack-Rabbit-Consumer/version.txt
+
+cat /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/OpenStack-Rabbit-Consumer/version.txt
