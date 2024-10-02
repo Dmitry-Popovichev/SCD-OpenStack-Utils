@@ -4,6 +4,7 @@ on:
   schedule: 
       - cron: "21 10 * * SUN-SAT" # Everyday at 10:21
 
+jobs:
   push_dev_image_harbor:
     runs-on: ubuntu-latest
     needs: test_and_lint
