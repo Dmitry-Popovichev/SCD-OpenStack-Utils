@@ -8,6 +8,17 @@ on:
       - cron: "* 5 * * *" # Every 5 minutes
 
 jobs:
+  version_increment_test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts
+    steps:
+      - uses: actions/checkout@v4
+      - name: Increment Version
+        run: |
+          ./version_increment.sh
+
   test_and_lint:
     runs-on: ubuntu-latest
     strategy:
