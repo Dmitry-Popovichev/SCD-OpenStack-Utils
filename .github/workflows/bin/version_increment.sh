@@ -8,7 +8,7 @@ echo "..."
 echo ~/OpenStack-Rabbit-Consumer/version.txt
 echo "Bye"
 
-version=`cat /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/OpenStack-Rabbit-Consumer/version.txt` #reads the version.txt file and sets the version to the current version
+version=`cat ~0/OpenStack-Rabbit-Consumer/version.txt` #reads the version.txt file and sets the version to the current version
 
 # cuts the $version variable into major, minor and patch numbers removing the fullstop
 major=$(echo $version | cut -f1 -d.)
@@ -30,6 +30,6 @@ newversion="$major.$minor.$patch"
 echo $newversion
 
 #overwrites the version.txt file with new new version
-printf "$newversion" > /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/OpenStack-Rabbit-Consumer/version.txt
+printf "$newversion" > ~0/OpenStack-Rabbit-Consumer/version.txt
 
-cat /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/OpenStack-Rabbit-Consumer/version.txt
+cat ~0/OpenStack-Rabbit-Consumer/version.txt
