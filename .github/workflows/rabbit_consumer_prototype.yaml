@@ -5,27 +5,23 @@ on:
     branches:
       - master
   schedule: 
-      - cron: "* 5 * * *" # Every 5 minutes
+      - cron: "12 10 * * TUE" # Every Tuesday at 10.12am
+  paths:
+    - 'OpenStack-Rabbit-Consumer/'
 
 jobs:
-  version_increment_test:
+  version_increment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Increment Version 3
-        if: always()
+      - name: Increment Version
         run: bash ${{ github.workspace }}/.github/workflows/bin/version_increment.sh
-
-      - name: Path finder 
-        if: always()
-        run: |
-          echo ${{ github.workspace }}/.github/workflows/bin/version_increment.sh
-          echo ${{ github.workspace }}/OpenStack-Rabbit-Consumer/version.txt
-          echo ${{ github.workspace }}./version.txt
-          echo $GITHUB_WORKSPACE
 
       - name: Commit Changes
         uses: EndBug/add-and-commit@v9
         with:
-          add: /home/runner/work/SCD-OpenStack-Utils/SCD-OpenStack-Utils/OpenStack-Rabbit-Consumer/version.txt
+          add: ${{ github.workspace }}/OpenStack-Rabbit-Consumer/version.txt
+          default_author: github_actions
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
